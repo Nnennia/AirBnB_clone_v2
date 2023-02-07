@@ -1,12 +1,19 @@
-#!/usr/bin/pyhon3
-"""defines a city class"""
+#!/usr/bin/python3
+"""Defines the City class."""
+from models.base_model import Base
 from models.base_model import BaseModel
+from sqlalchemy import Column
+from sqlalchemy import ForeignKey
+from sqlalchemy import String
+from sqlalchemy.orm import relationship
 
 
-class City(BaseModel):
+class City(BaseModel, Base):
     """Defines a city class
     Attributes:
-        state_id(str): state id
-        name(str): name of city"""
-    state_id = ""
-    name = ""
+        state_id: state id
+        name: name of city
+        __tablename__(str): The name of the MySQL table to store Cities"""
+    state_id = Column(String(60), ForeignKey("states.id"), nullable=False)
+    name = Column(String(128), nullable=False)
+    places = relationship("Place", backref="cities", cascade="delete")
