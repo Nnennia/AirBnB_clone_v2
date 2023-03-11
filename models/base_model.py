@@ -48,6 +48,7 @@ class BaseModel:
 
     def to_dict(self):
         """Return a dictionary representation of the BaseModel instance.
+
         Includes the key/value pair __class__ representing
         the class name of the object.
         """

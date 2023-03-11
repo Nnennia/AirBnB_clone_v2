@@ -16,7 +16,12 @@ from sqlalchemy.orm import sessionmaker
 
 
 class DBStorage:
-    """Represents a database storage engine"""
+    """Represents a database storage engine.
+
+    Attributes:
+        __engine (sqlalchemy.Engine): The working SQLAlchemy engine.
+        __session (sqlalchemy.Session): The working SQLAlchemy session.
+    """
 
     __engine = None
     __session = None
@@ -33,7 +38,13 @@ class DBStorage:
             Base.metadata.drop_all(self.__engine)
 
     def all(self, cls=None):
-        """Query on the current database session"""
+        """Query on the curret database session all objects of the given class.
+
+        If cls is None, queries all types of objects.
+
+        Return:
+            Dict of queried classes in the format <class name>.<obj id> = obj.
+        """
         if cls is None:
             objs = self.__session.query(State).all()
             objs.extend(self.__session.query(City).all())
@@ -48,15 +59,15 @@ class DBStorage:
         return {"{}.{}".format(type(o).__name__, o.id): o for o in objs}
 
     def new(self, obj):
-        """Add the object to the current database session"""
+        """Add obj to the current database session."""
         self.__session.add(obj)
 
     def save(self):
-        """Commit all changes to the current database session"""
+        """Commit all changes to the current database session."""
         self.__session.commit()
 
     def delete(self, obj=None):
-        """Delete obj fromj current database session"""
+        """Delete obj from the current database session."""
         if obj is not None:
             self.__session.delete(obj)
 
