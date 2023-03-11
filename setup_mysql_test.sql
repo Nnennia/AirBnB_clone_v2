@@ -1,7 +1,7 @@
 -- Creates a MySql Server 8.0 with:
---  Database: hbnb_test_db
---  User: hbnb_test
---  Password:hbnb_test_pwd
+--  Database: hbnb_dev_db
+--  User: hbnb_dev
+--  Password:hbnb_dev_pwd
 
 CREATE DATABASE IF NOT EXISTS hbnb_test_db;
 DROP USER IF EXISTS 'hbnb_test'@'localhost';

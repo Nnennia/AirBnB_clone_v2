@@ -10,7 +10,7 @@
   <img src="https://github.com/Nnennia/AirBnB_clone/blob/main/assets/work.png" alt="Map">
 </p>
 ---
-
+web_static_20233323838.tgz
 ## Description :house:
 
 HolbertonBnB is a complete web application, integrating database storage,
